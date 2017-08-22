@@ -24,7 +24,7 @@ namespace Eto.Forms.Controls.SkiaSharp.Tests
 
             skcontrol.PaintSurfaceAction = ((surface) => Tests.PaintStuff(surface));
 
-            Title = "SKControl Demo";
+            Title = "SKControl Demo (OpenGL Renderer)";
 
             ClientSize = new Drawing.Size(500, 500);
 
