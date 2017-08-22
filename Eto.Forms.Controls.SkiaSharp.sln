@@ -15,6 +15,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eto.Forms.Controls.SkiaShar
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eto.Forms.Controls.SkiaSharp.Shared", "Eto.Forms.Controls.SkiaSharp.Shared\Eto.Forms.Controls.SkiaSharp.Shared.csproj", "{5A303CE8-BF51-460C-8630-58A983686ED7}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Native SkiaSharp Libraries", "Native SkiaSharp Libraries", "{49986FA8-0B12-4332-A5D2-C9FED0826876}"
+	ProjectSection(SolutionItems) = preProject
+		Native SkiaSharp Libraries\Windows 64-bit\libSkiaSharp.dll = Native SkiaSharp Libraries\Windows 64-bit\libSkiaSharp.dll
+		Native SkiaSharp Libraries\macOS 64-bit\libSkiaSharp.dylib = Native SkiaSharp Libraries\macOS 64-bit\libSkiaSharp.dylib
+		Native SkiaSharp Libraries\Linux 64-bit\libSkiaSharp.so = Native SkiaSharp Libraries\Linux 64-bit\libSkiaSharp.so
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
