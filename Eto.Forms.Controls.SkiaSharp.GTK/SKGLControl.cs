@@ -20,16 +20,27 @@ namespace Eto.Forms.Controls.SkiaSharp.GTK
         }
 
         public override Eto.Drawing.Color BackgroundColor { get; set; }
+        public Action<SKSurface> PaintSurfaceAction
+        {
+            get
+            {
+                return nativecontrol.PaintSurface;
+            }
+            set
+            {
+                nativecontrol.PaintSurface = value;
+            }
+        }
+
     }
 
     public class SKGLControl_GTK : OpenTK.GLWidget
     {
-        
+
+        public Action<SKSurface> PaintSurface;
+
         private GRContext grContext;
         private GRBackendRenderTargetDesc renderTarget;
-
-        private float _lastTouchX;
-        private float _lastTouchY;
 
         public SKGLControl_GTK(): base()
         {
@@ -78,10 +89,7 @@ namespace Eto.Forms.Controls.SkiaSharp.GTK
                 using (var surface = SKSurface.Create(grContext, renderTarget))
                 {
 
-                    surface.Canvas.Clear(SKColors.White);
-                                       
-                    // start drawing
-                    OnPaintSurface(new SKPaintGLSurfaceEventArgs(surface, renderTarget));
+                    if (PaintSurface != null) PaintSurface.Invoke(surface);
 
                     surface.Canvas.Flush();
                 }
@@ -101,14 +109,7 @@ namespace Eto.Forms.Controls.SkiaSharp.GTK
                 grContext = null;
             }
         }
-
-        public event EventHandler<SKPaintGLSurfaceEventArgs> PaintSurface;
-
-        protected virtual void OnPaintSurface(SKPaintGLSurfaceEventArgs e)
-        {
-            if (PaintSurface != null) PaintSurface.Invoke(this, e);
-        }
-
+        
         public static GRBackendRenderTargetDesc CreateRenderTarget()
         {
 
@@ -133,19 +134,5 @@ namespace Eto.Forms.Controls.SkiaSharp.GTK
         }
 
     }
-
-    public class SKPaintGLSurfaceEventArgs : EventArgs
-    {
-        public SKPaintGLSurfaceEventArgs(SKSurface surface, GRBackendRenderTargetDesc renderTarget)
-        {
-            Surface = surface;
-            RenderTarget = renderTarget;
-        }
-
-        public SKSurface Surface { get; private set; }
-
-        public GRBackendRenderTargetDesc RenderTarget { get; private set; }
-    }
-
 
 }

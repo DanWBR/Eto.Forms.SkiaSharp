@@ -20,11 +20,25 @@ namespace Eto.Forms.Controls.SkiaSharp.WinForms
             nativecontrol = new SKGLControl_WinForms();
             this.Control = nativecontrol;
         }
+        public Action<SKSurface> PaintSurfaceAction
+        {
+            get
+            {
+                return nativecontrol.PaintSurface;
+            }
+            set
+            {
+                nativecontrol.PaintSurface = value;
+            }
+        }
+
 
     }
 
     public class SKGLControl_WinForms : SKGLControl
     {
+
+        public new Action<SKSurface> PaintSurface;
 
         public bool WPFHost = false;
 
@@ -34,9 +48,6 @@ namespace Eto.Forms.Controls.SkiaSharp.WinForms
         
         private GRContext grContext;
         private GRBackendRenderTargetDesc renderTarget;
-
-        private float _lastTouchX;
-        private float _lastTouchY;
 
         public SKGLControl_WinForms()
         {
@@ -66,7 +77,7 @@ namespace Eto.Forms.Controls.SkiaSharp.WinForms
             using (var surface = SKSurface.Create(grContext, renderTarget))
             {
 
-                surface.Canvas.Clear(SKColors.White);
+                if (PaintSurface != null) PaintSurface.Invoke(surface);
                 
                 // start drawing
                 OnPaintSurface(new SKPaintGLSurfaceEventArgs(surface, renderTarget));

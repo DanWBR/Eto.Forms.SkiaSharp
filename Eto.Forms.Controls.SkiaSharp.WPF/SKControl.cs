@@ -4,6 +4,7 @@ using SkiaSharp.Views.WPF;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System;
 
 namespace Eto.Forms.Controls.SkiaSharp.WPF
 {
@@ -19,11 +20,25 @@ namespace Eto.Forms.Controls.SkiaSharp.WPF
         }
 
         public override Eto.Drawing.Color BackgroundColor { get; set; }
+        public Action<SKSurface> PaintSurfaceAction
+        {
+            get
+            {
+                return nativecontrol.PaintSurface;
+            }
+            set
+            {
+                nativecontrol.PaintSurface = value;
+            }
+        }
+
     }
         
     public class SKControl_WPF : SKElement
     {
-        
+
+        public new Action<SKSurface> PaintSurface;
+
         private WriteableBitmap bitmap;
         
 
@@ -65,6 +80,7 @@ namespace Eto.Forms.Controls.SkiaSharp.WPF
             bitmap.Lock();
             using (var surface = SKSurface.Create(info, bitmap.BackBuffer, bitmap.BackBufferStride))
             {
+                if (PaintSurface != null) PaintSurface.Invoke(surface);
                 OnPaintSurface(new SKPaintSurfaceEventArgs(surface, info));
                 surface.Canvas.Flush();
             }

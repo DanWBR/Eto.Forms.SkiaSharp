@@ -79,11 +79,5 @@ namespace SkiaSharp.Views.Mac
             renderTarget = SKGLDrawable.CreateRenderTarget();
         }
 
-        public event EventHandler<SKPaintGLSurfaceEventArgs> PaintSurface;
-
-        public virtual void DrawInSurface(SKSurface surface, GRBackendRenderTargetDesc renderTarget)
-		{
-			if (PaintSurface != null) PaintSurface.Invoke(this, new SKPaintGLSurfaceEventArgs(surface, renderTarget));
-		}
     }
 }

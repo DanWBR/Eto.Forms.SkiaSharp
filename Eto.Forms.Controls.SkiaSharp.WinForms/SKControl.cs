@@ -17,17 +17,28 @@ namespace Eto.Forms.Controls.SkiaSharp.WinForms
             nativecontrol = new SKControl_WinForms();
             this.Control = nativecontrol;
         }
+        public Action<SKSurface> PaintSurfaceAction
+        {
+            get
+            {
+                return nativecontrol.PaintSurface;
+            }
+            set
+            {
+                nativecontrol.PaintSurface = value;
+            }
+        }
+
 
     }
 
     public class SKControl_WinForms : SKControl
     {
-        
+
+        public new Action<SKSurface> PaintSurface;
+
         private System.Drawing.Bitmap bitmap;
-
-        private float _lastTouchX;
-        private float _lastTouchY;
-
+        
         public SKControl_WinForms()
         {
         }
@@ -45,7 +56,8 @@ namespace Eto.Forms.Controls.SkiaSharp.WinForms
             var info = new SKImageInfo(Width, Height, SKImageInfo.PlatformColorType, SKAlphaType.Premul);
             using (var surface = SKSurface.Create(info, data.Scan0, data.Stride))
             {
-                // start drawing
+
+                if (PaintSurface != null) PaintSurface.Invoke(surface);
 
                 OnPaintSurface(new SKPaintSurfaceEventArgs(surface, info));
 

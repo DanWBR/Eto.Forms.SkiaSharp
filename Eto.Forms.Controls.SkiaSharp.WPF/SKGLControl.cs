@@ -5,6 +5,7 @@ using SkiaSharp.Views.WPF;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System;
 
 namespace Eto.Forms.Controls.SkiaSharp.WPF
 {
@@ -16,10 +17,28 @@ namespace Eto.Forms.Controls.SkiaSharp.WPF
         public SKGLControlHandler()
         {
             nativecontrol = new SKGLControl_WPF();
+
+            // Create the winforms control
+
+            nativecontrol.WinFormsControl = new WinForms.SKGLControl_WinForms();
+
             this.Control = nativecontrol;
         }
 
         public override Eto.Drawing.Color BackgroundColor { get; set; }
+
+        public Action<SKSurface> PaintSurfaceAction
+        {
+            get
+            {
+                return nativecontrol.WinFormsControl.PaintSurface;
+            }
+            set
+            {
+                nativecontrol.WinFormsControl.PaintSurface = value;
+            }
+        }
+
 
     }
     

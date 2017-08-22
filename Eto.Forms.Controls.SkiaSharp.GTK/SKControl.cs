@@ -20,10 +20,25 @@ namespace Eto.Forms.Controls.SkiaSharp.GTK
         }
 
         public override Eto.Drawing.Color BackgroundColor { get; set; }
+
+        public Action<SKSurface> PaintSurfaceAction
+        {
+            get {
+                return nativecontrol.PaintSurface;
+            }
+            set
+            {
+                nativecontrol.PaintSurface = value;                
+            }
+        }
+
     }
 
     public class SKControl_GTK : Gtk.EventBox
     {
+
+        public Action<SKSurface> PaintSurface;
+
         public SKControl_GTK()
         {
             this.AddEvents((int)Gdk.EventMask.PointerMotionMask);
@@ -48,6 +63,7 @@ namespace Eto.Forms.Controls.SkiaSharp.GTK
                         using (var skSurface = SKSurface.Create(bitmap.Info.Width, bitmap.Info.Height, ctype, SKAlphaType.Premul, bitmap.GetPixels(out len), bitmap.Info.RowBytes))
                         {
                             if (skSurface == null) { Console.WriteLine("skSurface is null"); }
+                            if (PaintSurface != null) PaintSurface.Invoke(skSurface);
                             skSurface.Canvas.Flush();
                             using (Cairo.Surface surface = new Cairo.ImageSurface(bitmap.GetPixels(out len), Cairo.Format.Argb32, bitmap.Width, bitmap.Height, bitmap.Width * 4))
                             {

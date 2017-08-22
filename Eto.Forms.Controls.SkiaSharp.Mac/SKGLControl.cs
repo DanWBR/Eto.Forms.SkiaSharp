@@ -41,12 +41,26 @@ namespace Eto.Forms.Controls.SkiaSharp.Mac
         }
 
         public override bool Enabled { get; set; }
+        public Action<SKSurface> PaintSurfaceAction
+        {
+            get
+            {
+                return nativecontrol.PaintSurface;
+            }
+            set
+            {
+                nativecontrol.PaintSurface = value;
+            }
+        }
+
 
     }
 
 
     public class SKGLControl_Mac : SKGLView, Eto.Mac.Forms.IMacControl
     {
+
+        public Action<SKSurface> PaintSurface;
 
         private NSTrackingArea trackarea;
         
@@ -107,9 +121,8 @@ namespace Eto.Forms.Controls.SkiaSharp.Mac
 
             using (var surface = SKSurface.Create(context, renderTarget))
             {
-                
-                // draw on the surface
-                DrawInSurface(surface, renderTarget);
+
+                if (PaintSurface != null) PaintSurface.Invoke(surface);
 
                 surface.Canvas.Flush();
             }
