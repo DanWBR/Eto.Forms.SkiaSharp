@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eto.Forms.Controls.SkiaSharp", "Eto.Forms.Controls.SkiaSharp\Eto.Forms.Controls.SkiaSharp.csproj", "{D54B1C45-9382-476D-8E3A-192D77C871EC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eto.Forms.Controls.SkiaSharp.Mac", "Eto.Forms.Controls.SkiaSharp.Mac\Eto.Forms.Controls.SkiaSharp.Mac.csproj", "{40010971-BD7F-403C-896D-BEED000C88CD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eto.Forms.Controls.SkiaSharp.WinForms", "Eto.Forms.Controls.SkiaSharp.WinForms\Eto.Forms.Controls.SkiaSharp.WinForms.csproj", "{8B77D8C3-99DD-4D02-9D9F-0ECD8EFED0F9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eto.Forms.Controls.SkiaSharp.WPF", "Eto.Forms.Controls.SkiaSharp.WPF\Eto.Forms.Controls.SkiaSharp.WPF.csproj", "{A27EE621-D1E6-4CDD-913B-45B307F7D50D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eto.Forms.Controls.SkiaSharp.GTK", "Eto.Forms.Controls.SkiaSharp.GTK\Eto.Forms.Controls.SkiaSharp.GTK.csproj", "{7B62BC2B-1598-4FB5-ADB9-EEDA64366182}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eto.Forms.Controls.SkiaSharp.Shared", "Eto.Forms.Controls.SkiaSharp.Shared\Eto.Forms.Controls.SkiaSharp.Shared.csproj", "{5A303CE8-BF51-460C-8630-58A983686ED7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D54B1C45-9382-476D-8E3A-192D77C871EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D54B1C45-9382-476D-8E3A-192D77C871EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D54B1C45-9382-476D-8E3A-192D77C871EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D54B1C45-9382-476D-8E3A-192D77C871EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{40010971-BD7F-403C-896D-BEED000C88CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40010971-BD7F-403C-896D-BEED000C88CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40010971-BD7F-403C-896D-BEED000C88CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40010971-BD7F-403C-896D-BEED000C88CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8B77D8C3-99DD-4D02-9D9F-0ECD8EFED0F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B77D8C3-99DD-4D02-9D9F-0ECD8EFED0F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B77D8C3-99DD-4D02-9D9F-0ECD8EFED0F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B77D8C3-99DD-4D02-9D9F-0ECD8EFED0F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A27EE621-D1E6-4CDD-913B-45B307F7D50D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A27EE621-D1E6-4CDD-913B-45B307F7D50D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A27EE621-D1E6-4CDD-913B-45B307F7D50D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A27EE621-D1E6-4CDD-913B-45B307F7D50D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B62BC2B-1598-4FB5-ADB9-EEDA64366182}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B62BC2B-1598-4FB5-ADB9-EEDA64366182}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B62BC2B-1598-4FB5-ADB9-EEDA64366182}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B62BC2B-1598-4FB5-ADB9-EEDA64366182}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A303CE8-BF51-460C-8630-58A983686ED7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A303CE8-BF51-460C-8630-58A983686ED7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A303CE8-BF51-460C-8630-58A983686ED7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A303CE8-BF51-460C-8630-58A983686ED7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
