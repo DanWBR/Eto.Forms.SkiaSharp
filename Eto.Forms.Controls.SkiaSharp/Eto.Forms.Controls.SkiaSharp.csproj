@@ -31,9 +31,13 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject />
+  </PropertyGroup>
+  <PropertyGroup>
+    <RunPostBuildEvent>OnOutputUpdated</RunPostBuildEvent>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="atk-sharp">
@@ -169,6 +173,17 @@
   </Target>
   <Import Project="..\packages\Eto.Platform.Mac.Template.2.4.0-build1099\build\Eto.Platform.Mac.Template.targets" Condition="Exists('..\packages\Eto.Platform.Mac.Template.2.4.0-build1099\build\Eto.Platform.Mac.Template.targets')" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <PropertyGroup>
+    <PostBuildEvent>if $(ConfigurationName) == Release (
+
+xcopy "$(SolutionDir)Native SkiaSharp Libraries\*" "$(TargetDir)\NativeLibs\" /E /Y /F /D
+
+del "$(TargetDir)*.vshost.*" 
+rmdir /S /Q "$(TargetDir)x86"
+rmdir /S /Q "$(TargetDir)x64"
+
+)</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
