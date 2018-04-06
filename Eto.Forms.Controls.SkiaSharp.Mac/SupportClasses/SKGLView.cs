@@ -1,12 +1,10 @@
-﻿using System;
-using System.ComponentModel;
-using MonoMac.AppKit;
-using MonoMac.CoreGraphics;
-using MonoMac.Foundation;
-using SkiaSharp.Views.GlesInterop;
+﻿using AppKit;
+using CoreGraphics;
+using SkiaSharp;
 using SkiaSharp.Views.Mac;
+using System;
 
-namespace SkiaSharp.Views.Mac
+namespace Views.Mac
 {
     public class SKGLView : NSOpenGLView
     {
@@ -79,5 +77,11 @@ namespace SkiaSharp.Views.Mac
             renderTarget = SKGLDrawable.CreateRenderTarget();
         }
 
+        public event EventHandler<SKPaintGLSurfaceEventArgs> PaintSurface;
+
+        public virtual void DrawInSurface(SKSurface surface, GRBackendRenderTargetDesc renderTarget)
+		{
+			if (PaintSurface != null) PaintSurface.Invoke(this, new SKPaintGLSurfaceEventArgs(surface, renderTarget));
+		}
     }
 }

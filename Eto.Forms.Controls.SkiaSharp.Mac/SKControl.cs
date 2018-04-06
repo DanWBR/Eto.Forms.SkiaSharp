@@ -1,10 +1,10 @@
 ﻿using Eto.Forms;
 using Eto.Forms.Controls.SkiaSharp.Shared;
-using MonoMac.AppKit;
-using MonoMac.CoreGraphics;
+using AppKit;
 using SkiaSharp;
 using SkiaSharp.Views.Mac;
 using System;
+using CoreGraphics;
 
 namespace Eto.Forms.Controls.SkiaSharp.Mac
 {

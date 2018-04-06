@@ -1,7 +1,7 @@
-﻿using Eto.Forms;
+﻿using AppKit;
+using CoreGraphics;
+using Eto.Forms;
 using Eto.Forms.Controls.SkiaSharp.Shared;
-using MonoMac.AppKit;
-using MonoMac.CoreGraphics;
 using SkiaSharp;
 using SkiaSharp.Views.GlesInterop;
 using SkiaSharp.Views.Mac;
@@ -57,7 +57,7 @@ namespace Eto.Forms.Controls.SkiaSharp.Mac
     }
 
 
-    public class SKGLControl_Mac : SKGLView, Eto.Mac.Forms.IMacControl
+    public class SKGLControl_Mac : Views.Mac.SKGLView, Eto.Mac.Forms.IMacControl
     {
 
         public Action<SKSurface> PaintSurface;
