@@ -126,7 +126,7 @@ namespace Eto.Forms.Controls.SkiaSharp.GTK
                 Width = bufferWidth,
                 Height = bufferHeight,
                 Config = GRPixelConfig.Rgba8888,
-                Origin = GRSurfaceOrigin.TopLeft,
+                Origin = GRSurfaceOrigin.BottomLeft,
                 SampleCount = samples,
                 StencilBits = stencil,
                 RenderTargetHandle = (IntPtr)framebuffer,
